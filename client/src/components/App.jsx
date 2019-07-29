@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 import moment from 'moment'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import Chart from './Chart'
 import Threshold from './Threshold'
+import useAlert from '../hooks/useAlert'
 import './App.css'
 // Working with CSS to keep consistency with react-toastify
 // prefer CSS-in-JS or preprocessor - would refactor
 
 const URL = 'http://localhost:8000'
-
-const alert = ({ timestamp, value }) => {
-  toast.warn(`${timestamp} - Threshold limit reached: ${value}`, {
-    position: toast.POSITION.TOP_LEFT,
-    bodyClassName: 'warning-toast',
-  })
-}
-
-const satisfiesThreshold = (condition, value) => {
-  if (condition && value) return value < condition
-  return true
-}
 
 // use of function keyword preferred over arrow func in functional components
 function App() {
@@ -54,14 +43,7 @@ function App() {
     return socket.close
   }, [URL])
 
-  // can be a useAlert custom hook
-  useEffect(() => {
-    const { value } = currentData
-    if (!satisfiesThreshold(threshold, value)) {
-      alert(currentData)
-    }
-  }, [currentData, threshold])
-
+  useAlert(currentData, threshold)
   return (
     <div className="container">
       <Chart data={data} />
