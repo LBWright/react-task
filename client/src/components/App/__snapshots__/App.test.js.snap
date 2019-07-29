@@ -227,11 +227,7 @@ exports[`<App /> should match snapshot 1`] = `
     </div>
   </div>
   <div
-    style={
-      Object {
-        "margin": 20,
-      }
-    }
+    className="threshold-container"
   >
     <h2>
       Threshold Controls
@@ -253,10 +249,12 @@ exports[`<App /> should match snapshot 1`] = `
         onClick={[Function]}
         type="submit"
       >
-        Set Threshold
+        Set
       </button>
     </form>
-    <div>
+    <div
+      className="threshold-reporter"
+    >
       <p>
         No Alert Threshold Specified
       </p>
