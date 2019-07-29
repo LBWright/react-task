@@ -4,7 +4,7 @@ import moment from 'moment'
 
 function useWebSocket(URL) {
   // [socket, setSocket] could probably be a ref since it doesn't
-  // actually need to be part of state - would refactor. But -
+  // actually need to be part of state - would refactor. However -
   // I could see a use-case for putting it on state in the event that
   // this is a dashboard and the user is swapping between views
   // Would then throw it in a Redux store
@@ -16,9 +16,8 @@ function useWebSocket(URL) {
   useEffect(() => {
     try {
       socket.on('connect', () => {
-        console.log('connected')
+        setSocket(socket)
       })
-      setSocket(socket)
       socket.on('data', ({ timestamp, ...rest }) => {
         // Format data in a way that makes sense to the reader
         // If data needed more processing, I would abstract this out
@@ -28,10 +27,17 @@ function useWebSocket(URL) {
         setData(prevData => prevData.concat(processedData))
       })
     } catch (e) {
+      // Could easily pass this to App and display the error to the user
       setError(e)
       console.log(e)
     }
-    return socket.close
+    return () => {
+      socket.close()
+    }
+    // only want a re-render on URL change
+    // maybe on `error` or `errorResolution`if we want
+    // to re-connect user automatically
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [URL])
 
   return { data, currentData, error }

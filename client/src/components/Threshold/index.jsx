@@ -11,16 +11,18 @@ function Threshold({ setThreshold, threshold }) {
   return (
     <div style={{ margin: 20 }}>
       <h2>Threshold Controls</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="threshold-form">
         <input
           placeholder="Set Alert Threshold"
           value={input}
           onChange={({ target: { value } }) => setInput(value)}
           type="number"
           onBlur={handleSubmit}
-          defaultValue={threshold}
+          id="threshold-input"
         />
-        <button type="submit">Set Threshold</button>
+        <button onClick={handleSubmit} id="threshold-submit" type="submit">
+          Set Threshold
+        </button>
       </form>
       <div>
         {threshold ? (

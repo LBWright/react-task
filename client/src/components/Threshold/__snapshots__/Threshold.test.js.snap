@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Threshold /> should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "margin": 20,
+    }
+  }
+>
+  <h2>
+    Threshold Controls
+  </h2>
+  <form
+    id="threshold-form"
+    onSubmit={[Function]}
+  >
+    <input
+      id="threshold-input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Set Alert Threshold"
+      type="number"
+      value=""
+    />
+    <button
+      id="threshold-submit"
+      onClick={[Function]}
+      type="submit"
+    >
+      Set Threshold
+    </button>
+  </form>
+  <div>
+    <p>
+      Current Alert Threshold: 
+      15
+    </p>
+  </div>
+</div>
+`;

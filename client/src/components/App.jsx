@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
-import Chart from './Chart'
-import Threshold from './Threshold'
 import useThresholdAlert from '../hooks/useThresholdAlert'
 import useWebSocket from '../hooks/useWebSocket'
+import { Chart, Threshold, Toast } from '.'
+
 import './App.css'
 // Working with CSS to keep consistency with react-toastify
 // prefer CSS-in-JS or preprocessor - would refactor
@@ -16,13 +14,13 @@ const URL = 'http://localhost:8000'
 function App() {
   const [threshold, setThreshold] = useState()
 
-  const { data, currentData } = useWebSocket(URL)
+  const { data, currentData, error } = useWebSocket(URL)
   useThresholdAlert(currentData, threshold)
   return (
     <div className="container">
       <Chart data={data} />
       <Threshold setThreshold={setThreshold} threshold={threshold} />
-      <ToastContainer />
+      <Toast />
     </div>
   )
 }

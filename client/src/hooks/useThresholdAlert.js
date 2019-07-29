@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 
+// Would add more options to the params object to
+// Make this more reusable
 const alert = ({ timestamp, value }) => {
   toast.warn(`${timestamp} - Threshold limit reached: ${value}`, {
     position: toast.POSITION.TOP_LEFT,

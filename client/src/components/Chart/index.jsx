@@ -21,7 +21,8 @@ function Chart({ data }) {
         right: 20,
         bottom: 20,
         left: 20,
-      }}>
+      }}
+    >
       <CartesianGrid />
       <XAxis dataKey="timestamp" />
       <YAxis dataKey="value" />
