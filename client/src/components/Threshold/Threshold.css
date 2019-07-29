@@ -1,0 +1,39 @@
+.form-control {
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+}
+.threshold-container {
+  margin: 20px;
+  border-radius: 5px;
+  border: 1px solid LightGray;
+  height: 200px;
+  width: 100%;
+  padding: 10px;
+}
+input {
+  font-size: inherit;
+  height: 40px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid LightGray;
+  padding: 0 5px;
+}
+
+button {
+  font-size: inherit;
+
+  height: 40px;
+  width: 45px;
+  color: white;
+  background: rgb(136, 132, 216);
+  border-radius: 5px;
+  padding: 0 5px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.threshold-reporter {
+  font-size: 20px;
+}

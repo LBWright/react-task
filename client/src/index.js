@@ -11,6 +11,7 @@
     if app were larger but not too large for Redux - it would separate the connection (and maybe auth)
     logicfrom the App/UI. It could then be bundled with a config component, packaged up and re-used
     across dashboards/UIs. Also reduces testing effort.
+  Would consider making all html elements ada-compliant and accessible
 */
 
 import React from 'react'

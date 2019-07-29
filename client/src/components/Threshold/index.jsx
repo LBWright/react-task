@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { func, number } from 'prop-types'
+import './Threshold.css'
 
 function Threshold({ setThreshold, threshold }) {
   const [input, setInput] = useState('')
@@ -9,7 +10,7 @@ function Threshold({ setThreshold, threshold }) {
     setThreshold(input)
   }
   return (
-    <div style={{ margin: 20 }}>
+    <div className="threshold-container">
       <h2>Threshold Controls</h2>
       <form onSubmit={handleSubmit} id="threshold-form">
         <input
@@ -21,10 +22,10 @@ function Threshold({ setThreshold, threshold }) {
           id="threshold-input"
         />
         <button onClick={handleSubmit} id="threshold-submit" type="submit">
-          Set Threshold
+          Set
         </button>
       </form>
-      <div>
+      <div className="threshold-reporter">
         {threshold ? (
           <p>Current Alert Threshold: {threshold}</p>
         ) : (
