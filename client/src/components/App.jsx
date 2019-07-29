@@ -1,34 +1,65 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import io from 'socket.io-client'
+import {
+  LineChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Line,
+  Legend,
+} from 'recharts'
+
 const URL = 'http://localhost:8000'
 
-class App extends Component {
-  state = {
-    socket: null,
-  }
+function App() {
+  const [socket, setSocket] = useState(io(URL))
+  const [data, setData] = useState([])
 
-  componentWillMount() {
-    this.initializeConnection()
-  }
-
-  initializeConnection = () => {
-    const socket = io(URL)
+  useEffect(() => {
     try {
       socket.on('connect', () => {
         console.log('connected')
       })
-      this.setState({ socket })
+      setSocket(socket)
     } catch (e) {
       console.log(e)
     }
-  }
+    return socket.close
+  }, [])
 
-  render() {
-    this.state.socket.on('data', data => {
-      console.log(data)
+  useEffect(() => {
+    socket.on('data', data => {
+      setData(oldData => oldData.concat(data))
     })
-    return <div>Practical Intro To WebSockets.</div>
-  }
+  }, [socket])
+
+  return (
+    <div>
+      <LineChart
+        width={700}
+        height={700}
+        data={data}
+        margin={{
+          top: 20,
+          right: 20,
+          bottom: 20,
+          left: 20,
+        }}>
+        <CartesianGrid />
+        <XAxis dataKey="timestamp" />
+        <YAxis dataKey="value" />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
+      </LineChart>
+    </div>
+  )
 }
 
 export default App
