@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { func, number } from 'prop-types'
 
 function Threshold({ setThreshold, threshold }) {
   const [input, setInput] = useState('')
@@ -19,6 +20,7 @@ function Threshold({ setThreshold, threshold }) {
           onBlur={handleSubmit}
           defaultValue={threshold}
         />
+        <button type="submit">Set Threshold</button>
       </form>
       <div>
         {threshold ? (
@@ -29,6 +31,11 @@ function Threshold({ setThreshold, threshold }) {
       </div>
     </div>
   )
+}
+
+Threshold.propTypes = {
+  setThreshold: func.isRequired,
+  threshold: number,
 }
 
 export default Threshold

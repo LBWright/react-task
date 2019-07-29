@@ -1,4 +1,5 @@
 import React from 'react'
+import { shape, arrayOf, number, string } from 'prop-types'
 import {
   LineChart,
   XAxis,
@@ -34,6 +35,15 @@ function Chart({ data }) {
       />
     </LineChart>
   )
+}
+
+Chart.propTypes = {
+  data: arrayOf(
+    shape({
+      value: number.isRequired,
+      timestamp: string.isRequired,
+    }),
+  ).isRequired,
 }
 
 export default Chart
