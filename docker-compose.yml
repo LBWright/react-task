@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+    environment:
+      - PORT=8000
+    ports:
+      - 8000:8000
+  client:
+    build:
+      context: "./client"
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=8000
+    ports:
+      - 80:3000
+      - 3000:3000

@@ -1,3 +1,5 @@
+// TODO: Add error handling and an initialization/loading spinner
+
 import React, { useState } from 'react'
 import useThresholdAlert from '../../hooks/useThresholdAlert'
 import useWebSocket from '../../hooks/useWebSocket'
@@ -14,7 +16,7 @@ const URL = 'http://localhost:8000'
 function App() {
   const [threshold, setThreshold] = useState()
 
-  const { data, currentData, error } = useWebSocket(URL)
+  const { data, currentData } = useWebSocket(URL)
   useThresholdAlert(currentData, threshold)
   return (
     <div className="container">
