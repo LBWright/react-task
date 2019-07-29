@@ -1,0 +1,6 @@
+.container {
+  display: flex;
+}
+.warning-toast {
+  color: black;
+}
