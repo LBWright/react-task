@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import useThresholdAlert from '../hooks/useThresholdAlert'
-import useWebSocket from '../hooks/useWebSocket'
-import { Chart, Threshold, Toast } from '.'
+import useThresholdAlert from '../../hooks/useThresholdAlert'
+import useWebSocket from '../../hooks/useWebSocket'
+import { Chart, Threshold, Toast } from '..'
 
 import './App.css'
 // Working with CSS to keep consistency with react-toastify

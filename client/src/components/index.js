@@ -6,3 +6,4 @@
 export { default as Toast } from './Toast'
 export { default as Threshold } from './Threshold'
 export { default as Chart } from './Chart'
+export { default as App } from './App'
